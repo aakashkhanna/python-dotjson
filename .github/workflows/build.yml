@@ -13,6 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - run: |
+    - name: Setup OS
+      run: |
+        sudo apt-get update -y
+        sudo apt-get upgrade -y
+    - name: Setup Git
+      run: |
+        sudo apt-get install -y git
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        submodules: recursive
+    - name: Poetry Build
+      run: |
         DOCKER_BUILDKIT=0 docker build -t python-dotjson:build --progress=plain .
