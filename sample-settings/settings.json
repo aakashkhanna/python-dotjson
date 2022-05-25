@@ -1,0 +1,10 @@
+{
+    "apple": 1,
+    "mango": 5,
+    "fruit": {
+        "units": [
+            "kg",
+            "pound"
+        ]
+    }
+}
