@@ -13,14 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Force Install GIT latest
-      run: |
-          apt-get install -y software-properties-common \
-          && apt-get update \
-          && add-apt-repository -y ppa:git-core/ppa \
-          && apt-get update \
-          && apt-get install -y git
     - uses: actions/checkout@v2
+      with:
+        repository: aakashkhanna/python-dotjson
+        fetch-depth: 0
     - run: |
         ls
     - name: Poetry Build
