@@ -13,17 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Setup OS
+    - name: Force Install GIT latest
       run: |
-        sudo apt-get update -y
-        sudo apt-get upgrade -y
-    - name: Setup Git
-      run: |
-        sudo apt-get install -y git
+          apt-get install -y software-properties-common \
+          && apt-get update \
+          && add-apt-repository -y ppa:git-core/ppa \
+          && apt-get update \
+          && apt-get install -y git
     - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-        submodules: recursive
+    - run: |
+        ls
     - name: Poetry Build
       run: |
         DOCKER_BUILDKIT=0 docker build -t python-dotjson:build --progress=plain .
