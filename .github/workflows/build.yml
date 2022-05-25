@@ -10,16 +10,10 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        repository: aakashkhanna/python-dotjson
-        fetch-depth: 0
-    - run: |
-        ls -la
-        ls -la .git
     - name: Poetry Build
       run: |
         DOCKER_BUILDKIT=0 docker build -t python-dotjson:build --progress=plain .
