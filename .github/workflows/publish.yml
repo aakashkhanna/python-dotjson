@@ -17,6 +17,6 @@ jobs:
     - name: Prepare repository
       run: git fetch --unshallow --tags
     - run: |
-        DOCKER_BUILDKIT=0 docker build -t python-dotjson:build --progress=plain\
-        --build-arg POETRY_PYPI_TOKEN_PYPI="${{ secrets.POETRY_PYPI_TOKEN_PYPI }}"\
+        DOCKER_BUILDKIT=0 docker build -t python-dotjson:build --progress=plain \
+        --build-arg POETRY_PYPI_TOKEN_PYPI="${{ secrets.POETRY_PYPI_TOKEN_PYPI }}" \
         --build-arg PUBLISH=y .
