@@ -10,9 +10,8 @@ flatten-json = "^0.1.13"
 pydantic = "^1.9.1"
 pytest = "^7.1.2"
 pytest-cov = "^3.0.0"
+pytest-md-report = "^0.2.0"
 
-[tool.pytest.ini_options]
-addopts = "/project/tests/ -rA tests --cov=dotjson"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

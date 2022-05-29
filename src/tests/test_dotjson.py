@@ -11,7 +11,7 @@ from dotjson.main import (
 )
 
 settings_content = '{"apple":1,"mango":5,"fruit":{"units":["kg","pound"]}}'
-os.chdir("/project/tests/sample-settings")
+os.chdir("tests/sample-settings")
 
 
 def test_find_json_path():
