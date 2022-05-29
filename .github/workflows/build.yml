@@ -29,6 +29,6 @@ jobs:
         docker stop $CONTAINER_ID 
         docker container rm $CONTAINER_ID
         echo "Test coverage file extracted"
-        cat /project/pytest-coverage.txt
+        cat pytest-coverage.txt
     - name: Comment coverage
       uses: coroo/pytest-coverage-commentator@v1.0.2
