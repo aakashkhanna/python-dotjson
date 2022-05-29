@@ -25,13 +25,10 @@ jobs:
         export CONTAINER_ID="$(docker run -dit --entrypoint bash python-dotjson:build)"
         echo "CONTAINER_ID: $CONTAINER_ID"
         mkdir report
-        docker cp "${CONTAINER_ID}:/project/report" ./report
+        docker cp "${CONTAINER_ID}:/project/pytest-coverage.txt" ./
         docker stop $CONTAINER_ID 
         docker container rm $CONTAINER_ID
-        echo "List of test coverage files extracted"
-        ls ./report
-    - name: Archive code coverage results
-      uses: actions/upload-artifact@v3
-      with:
-        name: code-coverage-reports
-        path: ./report
+        echo "Test coverage file extracted"
+        cat /project/pytest-coverage.txt
+    - name: Comment coverage
+      uses: coroo/pytest-coverage-commentator@v1.0.2
