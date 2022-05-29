@@ -12,6 +12,8 @@ pytest = "^7.1.2"
 pytest-cov = "^3.0.0"
 pytest-md-report = "^0.2.0"
 
+[tool.pytest.ini_options]
+addopts = "/project/tests/ -q tests --md-report --md-report-verbose=1 --cov=dotjson"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
