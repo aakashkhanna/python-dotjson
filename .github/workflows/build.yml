@@ -18,4 +18,21 @@ jobs:
       run: git fetch --unshallow --tags
     - name: Poetry Build
       run: |
-        DOCKER_BUILDKIT=0 docker build -t python-dotjson:build --progress=plain .
+        DOCKER_BUILDKIT=0 docker build -t python-dotjson:build --progress=plain \
+        --build-arg RUN_TESTS=y .
+    - name: Extract Code Coverage
+      run: |
+        export CONTAINER_ID="$(docker run -dit --entrypoint bash python-dotjson:build)"
+        echo "CONTAINER_ID: $CONTAINER_ID"
+        mkdir report
+        docker cp "${CONTAINER_ID}:/project/pytest-coverage.txt" ./
+        docker stop $CONTAINER_ID 
+        docker container rm $CONTAINER_ID
+        echo "Test coverage file extracted"
+        cat pytest-coverage.txt
+    - name: Comment unit tests and coverage
+      uses: machine-learning-apps/pr-comment@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        path: pytest-coverage.txt
