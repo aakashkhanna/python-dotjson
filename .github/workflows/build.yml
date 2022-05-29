@@ -30,5 +30,7 @@ jobs:
         docker container rm $CONTAINER_ID
         echo "Test coverage file extracted"
         cat pytest-coverage.txt
-    - name: Comment coverage
-      uses: coroo/pytest-coverage-commentator@v1.0.2
+    - name: Comment unit tests and coverage
+      uses: machine-learning-apps/pr-comment@master
+      with:
+        path: pytest-coverage.txt
