@@ -1,0 +1,10 @@
+{
+    "python.testing.pytestArgs": [
+        "src"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///home/aakashkh/source-code/python-dotjson/.github/workflows/build.yml"
+    }
+}
