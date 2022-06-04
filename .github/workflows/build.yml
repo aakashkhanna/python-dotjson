@@ -13,7 +13,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Prepare repository
-      run: git fetch --unshallow --tags
+      run: | 
+        git fetch --unshallow --tags
+        git tag
     - name: Poetry Build
       run: |
         DOCKER_BUILDKIT=0 docker build -t python-dotjson:build --progress=plain \
