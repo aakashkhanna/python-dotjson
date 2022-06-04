@@ -1,5 +1,10 @@
 # python-dotjson
 
+## Installation
+Sample usage:
+```
+pip install dotjson
+```
 ## Introduction
 If you want your application to derive configuration using a json file, To help you with that, you can add python-dotjson to your application to make it load the configuration from a settings.json file when it is present (e.g. in development) while remaining configurable via the environment variables.
 
