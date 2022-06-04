@@ -13,15 +13,6 @@ branches:
     tracks-release-branches: false
     is-release-branch: false
     is-mainline: true
-  develop:
-    regex: ^dev(elop)?(ment)?$
-    mode: ContinuousDeployment
-    tag: alpha
-    increment: Minor
-    source-branches: []
-    tracks-release-branches: true
-    is-release-branch: false
-    is-mainline: false
   release:
     regex: ^releases?[/-]
     mode: ContinuousDelivery
