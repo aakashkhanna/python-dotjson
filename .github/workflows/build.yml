@@ -3,8 +3,6 @@ name: Docker Image CI/CD
 on:
   push:
     branches: [ "*" ]
-  pull_request:
-    branches: [ "*" ]
 
 jobs:
 
@@ -30,9 +28,3 @@ jobs:
         docker container rm $CONTAINER_ID
         echo "Test coverage file extracted"
         cat pytest-coverage.txt
-    - name: Comment unit tests and coverage
-      uses: machine-learning-apps/pr-comment@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        path: pytest-coverage.txt
